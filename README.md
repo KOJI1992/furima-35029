@@ -2,56 +2,69 @@
 
 ## users テーブル
 
-| Column   | Type    | Options     |
-| -------- | ------- | ----------- |
-| nickname | string  | null: false |
-| email    | string  | null: false |
-| password | string  | null: false |
-| name     | string  | null: false |
-| furigana | string  | null: false |
-| birthday | integer | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| last_name       | string | null: false |
+| first_name      | string | null: false |
+| last_name_kana  | string | null: false |
+| first_name_kana | string | null: false |
+| birthday        | date   | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :purchases
+- has_one :delivery
 
 ## items テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| name         | text       | null: false                    |
-| explanation  | text       | null: false                    |
-| category     | string     | null: false                    |
-| quality      | string     | null: false                    |
-| delivery_fee | string     | null: false                    |
-| area         | string     | null: false                    |
-| delivery_day | string     | null: false                    |
-| price        | integer    | null: false                    |
-| user_id      | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| name            | string     | null: false                    |
+| detail          | text       | null: false                    |
+| category_id     | integer    | null: false                    |
+| quality_id      | integer    | null: false                    |
+| delivery_fee_id | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
+| delivery_day_id | integer    | null: false                    |
+| price           | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :purchase
 
-## purchase テーブル
+## delivery テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| card_number      | integer    | null: false                    |
-| card_expiration  | integer    | null: false                    |
-| cvc              | integer    | null: false                    |
-| postal_code      | integer    | null: false                    |
-| prefecture       | string     | null: false                    |
+| postal_code      | string     | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | city             | string     | null: false                    |
 | address          | string     | null: false                    |
-| building         | string     | null: false                    |
-| telephone_number | integer    | null: false                    |
-| user_id          | references | null: false, foreign_key: true |
-| item_id          | references | null: false, foreign_key: true |
+| building         | string     |                                |
+| telephone_number | string     | null: false                    |
+| user             | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- has_many :purchases
+
+## purchase テーブル
+
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| user     | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
+| delivery | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- belongs_to :delivery
