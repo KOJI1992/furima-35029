@@ -5,8 +5,8 @@
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
 | nickname           | string | null: false               |
-| email              | string | null: false               |
-| encrypted_password | string | null: false, unique: true |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
 | last_name          | string | null: false               |
 | first_name         | string | null: false               |
 | last_name_kana     | string | null: false               |
@@ -37,7 +37,7 @@
 - belongs_to :user
 - has_one :purchase
 
-## delivery テーブル
+## deliveries テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -53,7 +53,7 @@
 
 - belongs_to :purchase
 
-## purchase テーブル
+## purchases テーブル
 
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
