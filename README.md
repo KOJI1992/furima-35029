@@ -2,22 +2,21 @@
 
 ## users テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| nickname        | string | null: false |
-| email           | string | null: false |
-| password        | string | null: false |
-| last_name       | string | null: false |
-| first_name      | string | null: false |
-| last_name_kana  | string | null: false |
-| first_name_kana | string | null: false |
-| birthday        | date   | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false               |
+| encrypted_password | string | null: false, unique: true |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 
 - has_many :items
 - has_many :purchases
-- has_one :delivery
 
 ## items テーブル
 
@@ -48,12 +47,11 @@
 | address          | string     | null: false                    |
 | building         | string     |                                |
 | telephone_number | string     | null: false                    |
-| user             | references | null: false, foreign_key: true |
+| purchase         | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- has_many :purchases
+- belongs_to :purchase
 
 ## purchase テーブル
 
@@ -61,10 +59,9 @@
 | -------- | ---------- | ------------------------------ |
 | user     | references | null: false, foreign_key: true |
 | item     | references | null: false, foreign_key: true |
-| delivery | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :delivery
+- has_one :delivery
