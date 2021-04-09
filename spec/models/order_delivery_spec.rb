@@ -14,50 +14,50 @@ RSpec.describe OrderDelivery, type: :model do
         expect(@order_delivery).to be_valid
       end
       it 'buildingが空でも購入できる' do
-        @order_delivery.building = ""
+        @order_delivery.building = ''
         expect(@order_delivery).to be_valid
       end
     end
     context '商品を購入することができない' do
       it 'postal_codeが空では購入出来ない' do
-        @order_delivery.postal_code = ""
+        @order_delivery.postal_code = ''
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'postal_codeにハイフンがなければでは購入出来ない' do
-        @order_delivery.postal_code = "1234567"
+        @order_delivery.postal_code = '1234567'
         @order_delivery.valid?
-        expect(@order_delivery.errors.full_messages).to include("Postal code Input correctly")
+        expect(@order_delivery.errors.full_messages).to include('Postal code Input correctly')
       end
       it 'prefecture_idが０では購入できない' do
         @order_delivery.prefecture_id = 0
         @order_delivery.valid?
-        expect(@order_delivery.errors.full_messages).to include("Prefecture Select")
+        expect(@order_delivery.errors.full_messages).to include('Prefecture Select')
       end
       it 'cityが空では購入出来ない' do
-        @order_delivery.city = ""
+        @order_delivery.city = ''
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include("City can't be blank")
       end
       it 'addressが空では購入出来ない' do
-        @order_delivery.address = ""
+        @order_delivery.address = ''
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include("Address can't be blank")
       end
       it 'telephone_numberが空では購入出来ない' do
-        @order_delivery.telephone_number = ""
+        @order_delivery.telephone_number = ''
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include("Telephone number can't be blank")
       end
       it 'telephone_numberが数字でなければ購入出来ない' do
-        @order_delivery.telephone_number = "abc"
+        @order_delivery.telephone_number = 'abc'
         @order_delivery.valid?
-        expect(@order_delivery.errors.full_messages).to include("Telephone number Input only number")
+        expect(@order_delivery.errors.full_messages).to include('Telephone number Input only number')
       end
       it 'telephone_numberが11字以上では購入出来ない' do
-        @order_delivery.telephone_number = "111111111111"
+        @order_delivery.telephone_number = '111111111111'
         @order_delivery.valid?
-        expect(@order_delivery.errors.full_messages).to include("Telephone number Input only number")
+        expect(@order_delivery.errors.full_messages).to include('Telephone number Input only number')
       end
       it 'userが紐づいてなければ登録出来ない' do
         @order_delivery.user_id = nil
