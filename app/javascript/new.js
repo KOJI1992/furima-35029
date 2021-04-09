@@ -1,5 +1,6 @@
 function sample(){
   const inputPrice = document.getElementById('item-price')
+  if (!inputPrice){ return false;}
   inputPrice.addEventListener("input", () => {
     const itemPrice = inputPrice.value;
     const addTaxPrice = document.getElementById('add-tax-price')
