@@ -54,7 +54,7 @@ RSpec.describe OrderDelivery, type: :model do
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include('Telephone number Input only number')
       end
-      it 'telephone_numberが11字以上では購入出来ない' do
+      it 'telephone_numberが12字以上では購入出来ない' do
         @order_delivery.telephone_number = '111111111111'
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include('Telephone number Input only number')
