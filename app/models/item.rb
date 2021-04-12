@@ -11,7 +11,7 @@ class Item < ApplicationRecord
 
   validates :name, :detail, :image, presence: true
   validates :price, presence: true, format: { with: /\A[0-9]+\z/.freeze, message: 'Half-width number' },
-                    numericality: { greater_than: 300, less_than: 10_000_000, message: 'Out of setting range' }
+                    numericality: { greater_than_or_equal_to: 300, less_than: 10_000_000, message: 'Out of setting range' }
   with_options numericality: { other_than: 0, message: 'Select' } do
     validates :category_id
     validates :quality_id
