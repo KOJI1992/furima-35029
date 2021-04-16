@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_day
   has_one :order
   has_one_attached :image
+  has_many :comments
 
   validates :name, :detail, :image, presence: true
   validates :price, presence: true, format: { with: /\A[0-9]+\z/.freeze, message: 'Half-width number' },
