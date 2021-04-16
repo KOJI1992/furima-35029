@@ -65,3 +65,12 @@
 - belongs_to :user
 - belongs_to :item
 - has_one :delivery
+
+## comments テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+| comment | text       | null: false                    |
+
