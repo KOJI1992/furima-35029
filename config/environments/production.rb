@@ -111,8 +111,8 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   ActionCable.server.config.disable_request_forgery_protection = true
-  config.action_cable.url = "wss://furima-35029.herokuapp.com/cable" 
-  config.action_cable.allowed_request_origins = ['https://furima-35029.herokuapp.com', 'http://furima-35029.herokuapp.com']
+  config.action_cable.url = "ws://54.248.8.245/cable" 
+  config.action_cable.allowed_request_origins = ['http://54.248.8.245']
 
 
 end
