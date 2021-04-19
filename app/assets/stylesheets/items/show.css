@@ -175,6 +175,15 @@
   margin-bottom: 2vh;
 }
 
+.comments {
+  padding-left: 20px;
+}
+
+.comment {
+  margin: 0 10px;
+  text-align: center;
+}
+
 .comment-flag {
   display: flex;
   justify-content: center;

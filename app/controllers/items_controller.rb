@@ -21,6 +21,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = Comment.all.includes(:user)
   end
 
   def edit
