@@ -76,6 +76,7 @@
   </div>
 
   <div class="comment-box">
+  <% if user_signed_in? %>
     <%= form_with model:[@item, @comment] do |f| %>
       <%= f.text_field :comment, class:"comment-text" %>
       <p class="comment-warn">
@@ -85,6 +86,9 @@
       </p>
         <%= f.submit "コメントする", type: "submit", class: "comment-btn" %>
     <% end %>
+  <% else %>
+    <P>コメントを行うには会員登録が必要です。</p>
+  <% end %>
     <div id="comments">
       <% @comments.reverse_each do |comment| %>
         <div class="comment">
