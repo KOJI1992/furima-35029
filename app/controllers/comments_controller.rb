@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
+  def new
+    @comments = comment.all
+    @comment = comment.new
+  end
+
   def create
     @item = Item.find(params[:item_id])
     @comment = @item.comments.new(comment_params)
-    if @comment.save
-      redirect_to item_path(params[:item_id])
-    else
-      render :show
-    end
+    @comment.save
   end
 
   private
