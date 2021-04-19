@@ -92,7 +92,7 @@
     <div id="comments">
       <% @comments.reverse_each do |comment| %>
         <div class="comment">
-          <%= comment.user.nickname %>:<%= comment.comment %>
+          <%= comment.comment %>
         </div>
       <% end %>
     </div>
