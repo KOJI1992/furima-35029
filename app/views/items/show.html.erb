@@ -85,13 +85,13 @@
       </p>
         <%= f.submit "コメントする", type: "submit", class: "comment-btn" %>
     <% end %>
-    <ul class="comments">
-      <% @comments.each do |comment| %>
-        <li class="comment">
+    <div id="comments">
+      <% @comments.reverse_each do |comment| %>
+        <div class="comment">
           <%= comment.user.nickname %>:<%= comment.comment %>
-        </li>
+        </div>
       <% end %>
-    </ul>
+    </div>
   </div>
   <div class="links">
     <a href="#" class="change-item-btn">
