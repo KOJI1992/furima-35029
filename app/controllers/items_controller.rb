@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = Comment.all.includes(:user)
+    @comments = @item.comments.includes(:user)
   end
 
   def edit
